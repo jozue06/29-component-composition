@@ -22,14 +22,14 @@ export default class NoteItem extends React.Component {
     console.log('#2 render the note item', this.props.note);
 
     return (
-    <Style.Title>
+    <Style.Text>
       <li className="note">
       <Style.Text>Note Title: {this.props.note.noteName}</Style.Text>
-      <h4>Note Content: <Style.Text> {this.props.note.content}</Style.Text></h4>
+      <h4>Note Content: <Style.Title> {this.props.note.content}</Style.Title></h4>
       
       <Style.Button onClick={this.deleteNote}>x</Style.Button>
     </li>
-    </Style.Title>
+    </Style.Text>
     )
   }
 }
