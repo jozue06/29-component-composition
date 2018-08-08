@@ -21,11 +21,11 @@ class Dashboard extends React.Component {
   }
 
   hydrateStateWithLocalStorage() {
-    if ( localStorage.length > 1){
+  
       console.log('local storage hidrateee',localStorage)
     let hydrateState = JSON.parse(localStorage.note)
     this.setState({ notes: [...hydrateState] });
-    }
+    
     }
   
   componentDidMount() {
