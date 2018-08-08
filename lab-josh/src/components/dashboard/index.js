@@ -44,9 +44,7 @@ class Dashboard extends React.Component {
   }
 
   deleteNote = id => {
-
     const notes = this.state.notes.filter(note => note.id !==id);
-  
     this.setState( { notes } );
 
     let storageToSet = JSON.stringify(notes)
@@ -57,7 +55,7 @@ class Dashboard extends React.Component {
 
     return (
       <div>
-        
+        <Header />
         <Style.Wrapper>
           <NoteForm addNote={this.addNote} />
           {this.state.notes.map((note) => <NoteItem key={note.id} id={note.id} note={note} deleteNote={this.deleteNote} />)
