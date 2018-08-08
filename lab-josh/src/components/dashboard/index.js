@@ -10,8 +10,8 @@ import NoteItem from '../note-list/note-item/index.js';
 
 class Dashboard extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       notes: []
     };
@@ -22,7 +22,7 @@ class Dashboard extends React.Component {
 
   hydrateStateWithLocalStorage() {
     if ( localStorage.length > 1){
-      console.log(localStorage)
+      console.log('local storage hidrateee',localStorage)
     let hydrateState = JSON.parse(localStorage.note)
     this.setState({ notes: [...hydrateState] });
     }
@@ -34,21 +34,22 @@ class Dashboard extends React.Component {
  }   
 
 
-  addNote(note) {
-    this.state.notes.push(note);
-    this.setState({ notes: [...this.state.notes] });
-
-    let storageToSet = JSON.stringify(this.state.notes)
+  addNote = (note) => {
+    let notes = [...this.state.notes]
+    notes.push(note);
+    this.setState({ notes: notes });
+    console.log('state on add ', this.state.notes);
+    let storageToSet = JSON.stringify(notes)
     localStorage.setItem('note', storageToSet)
   }
 
-  deleteNote(id) {
-    const deletedNote = this.state.notes.find(note => {
-      return note.id = id; });
-    const noteIndex = this.state.notes.indexOf(deletedNote);
-    this.state.notes.splice(noteIndex, 1);
-    this.setState({ notes: [...this.state.notes] });
-    let storageToSet = JSON.stringify(this.state.notes)
+  deleteNote = id => {
+
+    const notes = this.state.notes.filter(note => note.id !==id);
+  
+    this.setState( { notes } );
+
+    let storageToSet = JSON.stringify(notes)
     localStorage.setItem('note', storageToSet)
   }
 
@@ -56,10 +57,10 @@ class Dashboard extends React.Component {
 
     return (
       <div>
-      
+        
         <Style.Wrapper>
           <NoteForm addNote={this.addNote} />
-          {this.state.notes.map((note) => <NoteItem id={note.id} note={note} deleteNote={this.deleteNote} />)
+          {this.state.notes.map((note) => <NoteItem key={note.id} id={note.id} note={note} deleteNote={this.deleteNote} />)
         }
         </Style.Wrapper>
         <Footer />
