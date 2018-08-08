@@ -1,7 +1,7 @@
-# Josh's lab 28
+# Josh's lab 29
 
-## This is a simple, non-persistant note app
+## This is a simple notes app ++
 
-## We can create and delete specific notes in our app until reload
+## We can create, delete and edit notes
 
 ###### //@jm6
