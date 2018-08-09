@@ -25,8 +25,7 @@ class NoteUpdateForm extends React.Component {
 
         }
         return <div>
-            <h4>dide oyu</h4>
-            <p>dbl clk</p>
+            <h4>click the E to edit your note</h4>
         </div>
     }
 }

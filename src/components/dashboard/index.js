@@ -23,6 +23,7 @@ class Dashboard extends React.Component {
     this.deleteNote = this.deleteNote.bind(this);
     this.updateNote = this.updateNote.bind(this);
 
+
   }
 
   hydrateStateWithLocalStorage() {
@@ -44,6 +45,7 @@ class Dashboard extends React.Component {
     notes.push(note);
     this.setState({ notes: notes });
     console.log('state on add ', this.state.notes);
+
     let storageToSet = JSON.stringify(notes)
     localStorage.setItem('note', storageToSet)
   }
@@ -57,11 +59,22 @@ class Dashboard extends React.Component {
   }
 
   updateNote = id => {
-    // const notes = this.state.notes.filter(note => note.id !==id);
     this.setState( { updatingNote: true} );
 
   }
+  save = id => {
+    console.log('state on save ', this.state.notes[0]);
+    let notes = this.state.notes;
+    const noteToUpdate = notes.filter(note => note.id === id);
+    console.log('note to update?>> ', noteToUpdate);
+    notes.push(noteToUpdate);
+    this.setState({ notes: notes });
 
+    let storageToSet = JSON.stringify(notes)
+    localStorage.setItem('note', storageToSet)
+  }
+
+ 
   render() {
 
     return (
@@ -71,7 +84,7 @@ class Dashboard extends React.Component {
           <NoteForm addNote={this.addNote} />
           {this.state.notes.map((note) => <NoteItem key={note.id} id={note.id} note={note} deleteNote={this.deleteNote} updateNote={this.updateNote} />)
         }
-        <UpdateNote {...this.state} />
+        <UpdateNote {...this.state} save={this.save} />
      
         </Style.Wrapper>
         <Footer />
