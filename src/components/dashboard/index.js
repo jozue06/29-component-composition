@@ -5,6 +5,7 @@ import Footer from '../app/footer.js';
 import Style from '../style/styles.js';
 import NoteForm from '../note-create-form/index.js';
 import NoteItem from '../note-list/note-item/index.js';
+import UpdateNote from '../note-update/index.js'
 
 
 
@@ -13,11 +14,15 @@ class Dashboard extends React.Component {
   constructor() {
     super();
     this.state = {
-      notes: []
+      notes: [],
+      updatingNote: false,
+
     };
 
     this.addNote = this.addNote.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
+    this.updateNote = this.updateNote.bind(this);
+
   }
 
   hydrateStateWithLocalStorage() {
@@ -51,6 +56,12 @@ class Dashboard extends React.Component {
     localStorage.setItem('note', storageToSet)
   }
 
+  updateNote = id => {
+    // const notes = this.state.notes.filter(note => note.id !==id);
+    this.setState( { updatingNote: true} );
+
+  }
+
   render() {
 
     return (
@@ -58,8 +69,10 @@ class Dashboard extends React.Component {
         <Header />
         <Style.Wrapper>
           <NoteForm addNote={this.addNote} />
-          {this.state.notes.map((note) => <NoteItem key={note.id} id={note.id} note={note} deleteNote={this.deleteNote} />)
+          {this.state.notes.map((note) => <NoteItem key={note.id} id={note.id} note={note} deleteNote={this.deleteNote} updateNote={this.updateNote} />)
         }
+        <UpdateNote {...this.state} />
+     
         </Style.Wrapper>
         <Footer />
       </div>
