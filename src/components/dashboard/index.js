@@ -62,18 +62,16 @@ class Dashboard extends React.Component {
     this.setState( { updatingNote: true} );
 
   }
-  save = id => {
-    console.log('state on save ', this.state.notes[0]);
-    let notes = this.state.notes;
-    const noteToUpdate = notes.filter(note => note.id === id);
-    console.log('note to update?>> ', noteToUpdate);
-    notes.push(noteToUpdate);
+
+ save = id => {
+    let notes = [...this.state.notes]
+    notes.push(note);
     this.setState({ notes: notes });
+    console.log('state on add ', this.state.notes);
 
     let storageToSet = JSON.stringify(notes)
     localStorage.setItem('note', storageToSet)
   }
-
  
   render() {
 
@@ -84,7 +82,7 @@ class Dashboard extends React.Component {
           <NoteForm addNote={this.addNote} />
           {this.state.notes.map((note) => <NoteItem key={note.id} id={note.id} note={note} deleteNote={this.deleteNote} updateNote={this.updateNote} />)
         }
-        <UpdateNote {...this.state} save={this.save} />
+        <UpdateNote key={this.state.note.id} id={note.id} note={note} save={this.save} />
      
         </Style.Wrapper>
         <Footer />
