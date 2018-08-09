@@ -6,7 +6,7 @@ class ShowUpdateForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            notes: this.props.notes,
+            notes: this.props.notes
         }
         // this.onUpdate = this.onUpdate.bind(this);
         this.cancel = this.cancel.bind(this);
@@ -32,44 +32,34 @@ class ShowUpdateForm extends React.Component {
 
     handleChange(e) {   
         const change = e.target.value;
-        console.log('change', change)
-        this.setState({ [e.target.name]: change });
+        console.log('change ', change)
+        const content = this.state.content
+        console.log('handle change state ', this.state.notes)
+        this.setState({ content: change });
     }
 
-    // handleSubmit(e) {
+    // handleSave(e) {
     //     e.preventDefault();
-    //     
+        
     //     console.log('this statmelel---->', this.state)
     //     this.setState({
     //         content: ''
     //     })
     // }
+
     handleSave(e) {
         e.preventDefault();
-        console.log('save?', this.state.content);
-        this.props.save(this.state.content);
+        console.log('handle save? ', this.state.notes);
+        this.props.save(this.state.notes);
     }
     
 
     render() {
         return <form id="form" >
-            <Style.Text>  <textarea type="field" name="content" placeholder={this.props.notes[0].content} value={this.state.content} onChange={this.handleChange} /></Style.Text>
+            <Style.Text>  <textarea type="field" name="content" placeholder={this.props.notes[0].content} value={this.props.notes.content} onChange={this.handleChange} /></Style.Text>
             <Style.Button onClick={this.handleSave} type="save" value="save">Save</Style.Button>
         </form>;
     }
-
-    // render(){
-    //     console.log('this.props', this.props.notes)
-    //     return(
-    //         <div>
-    //         <h1>what is this?: {this.props.notes[0].noteName} </h1>
-    //         <form>
-    //             <input value={this.props.notes[0].content} onChange={this.onUpdate}/>
-    //             <button save={this.save}>Save</button>
-    //         </form>
-    //         </div>
-    //     )   
-    // }
 
 }
 
