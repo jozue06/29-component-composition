@@ -63,13 +63,19 @@ class Dashboard extends React.Component {
 
   }
 
- save = id => {
-    let notes = [...this.state.notes]
-    notes.push(note);
-    this.setState({ notes: notes });
-    console.log('state on add ', this.state.notes);
+//  save = id => {
+//     let notes = [...this.state.notes]
+//     notes.push(note);
+//     this.setState({ notes: notes });
+//     console.log('state on add ', this.state.notes);
 
-
+  save = note => {
+    console.log('state in save ', this.state.notes);
+    // let notes = this.state.notes;
+    // const noteToUpdate = notes.filter(note => note.id === id);
+    // console.log('note to update?>> ', noteToUpdate);
+    // notes.push(noteToUpdate);
+    // this.setState({ notes: notes });
     
     let notes = this.state.notes.map(e => {
       if (e.id === note.id) {
