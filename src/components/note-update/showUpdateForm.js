@@ -11,7 +11,6 @@ class ShowUpdateForm extends React.Component {
         // this.onUpdate = this.onUpdate.bind(this);
         this.cancel = this.cancel.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSave = this.handleSave.bind(this);
 
     }

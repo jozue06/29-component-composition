@@ -28,7 +28,7 @@ class Dashboard extends React.Component {
 
   hydrateStateWithLocalStorage() {
   
-      console.log('local storage hidrateee',localStorage)
+    console.log('local storage hidrateee',localStorage)
     let hydrateState = JSON.parse(localStorage.note)
     this.setState({ notes: [...hydrateState] });
     
@@ -36,6 +36,7 @@ class Dashboard extends React.Component {
   
   componentDidMount() {
     console.log('mlkjasdfteeeee')
+    if(localStorage.note)
     this.hydrateStateWithLocalStorage();
  }   
 
@@ -101,7 +102,7 @@ class Dashboard extends React.Component {
           <NoteForm addNote={this.addNote} />
           {this.state.notes.map((note) => <NoteItem key={note.id} id={note.id} note={note} deleteNote={this.deleteNote} updateNote={this.updateNote} />)
         }
-        <UpdateNote key={this.state.note.id} id={note.id} note={note} save={this.save} />
+        <UpdateNote {...this.state} save={this.save} />
      
         </Style.Wrapper>
         <Footer />
