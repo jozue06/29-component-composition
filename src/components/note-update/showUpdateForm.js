@@ -6,15 +6,14 @@ class ShowUpdateForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            content: this.props.note,
+            notes: this.props.notes
         }
         this.cancel = this.cancel.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSave = this.handleSave.bind(this);
+        console.log('show props', this.props)
 
     }
-
-
 
 
     cancel() {
@@ -25,25 +24,23 @@ class ShowUpdateForm extends React.Component {
 
     handleChange = (e) => {
         e.preventDefault();
-        console.log('this statmelel---->', this.state)
-        this.setState({
-            content: e.target.value,
-        });
+        console.log('this statmelel---->', this.props)
+        this.setState({content: e.target.value,});
     }
 
 
     handleSave = (e) => {
         e.preventDefault();
-        let note = { ...this.props.note };
-        note.content = this.state.content;
-        this.props.save(note);
+        console.log('handle save state', this.state)
+        let notes = this.state
+        this.props.save(notes);
     }
 
 
     render() {
         return <form id="form" >
-            <Style.Text>  <textarea type="field" name="content" value={this.state.content} onChange={this.handleChange} /></Style.Text>
-            <Style.Button onClick={this.handleSave} type="save" value="save">Save</Style.Button>
+            <Style.Text>  <textarea type="field" name="content" placeholder={this.state.notes.content} value={this.state.notes.content} onChange={this.handleChange} /></Style.Text>
+            <Style.Button onClick={this.handleSave} type="save" value="save">Update</Style.Button>
         </form>;
     }
 

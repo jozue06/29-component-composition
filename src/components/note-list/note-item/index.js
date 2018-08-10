@@ -20,7 +20,7 @@ export default class NoteItem extends React.Component {
   }
 
   updateNote(e) {
-    console.log('this in update state?', this.state);
+    console.log('this in update state?', this.props);
     e.preventDefault();
     this.props.updateNote(this.props.id);
   }
@@ -38,6 +38,7 @@ export default class NoteItem extends React.Component {
 
           <Style.Button onClick={this.deleteNote}>x</Style.Button>
           <Style.Button onClick={this.updateNote}>E</Style.Button>
+          <p>Click "X" to delete, or "E" to edit"</p>
 
         </li>
       </Style.Text>
