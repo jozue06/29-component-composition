@@ -12,13 +12,11 @@ class NoteUpdateForm extends React.Component {
     }
 
     showUpdateNote() {
-        console.log('inside showupdate ', this.props);
         return <ShowUpdateForm ident="show update form compo" save={this.props.save} notes={this.props.notes} content={this.props.content} />
     }
 
 
     render() {
-        console.log('inside update note state', this.props);
         if (this.props.updatingNote) {
             return this.showUpdateNote();
         }

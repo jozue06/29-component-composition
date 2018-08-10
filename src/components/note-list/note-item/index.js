@@ -14,22 +14,17 @@ export default class NoteItem extends React.Component {
 
 
   deleteNote(e) {
-    console.log('this state?', this.props.id);
     e.preventDefault();
     this.props.deleteNote(this.props.id);
   }
 
   updateNote(e) {
-    console.log('this in update state?', this.props);
     e.preventDefault();
     this.props.updateNote(this.props.id);
   }
 
 
   render() {
-
-    console.log('#2 render the note item', this.props.note);
-
     return (
       <Style.Text>
         <li className="note">
