@@ -20,7 +20,7 @@ export default class NoteItem extends React.Component {
   }
 
   updateNote(e) {
-    console.log('this state?', this.props.id);
+    console.log('this in update state?', this.state);
     e.preventDefault();
     this.props.updateNote(this.props.id);
   }
