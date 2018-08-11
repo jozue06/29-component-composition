@@ -32,15 +32,22 @@ class ShowUpdateForm extends React.Component {
     handleSave = (e) => {
         e.preventDefault();
         console.log('handle save state', this.state)
-        let notes = this.state
-        this.props.save(notes);
+        this.props.save(this.props.id, this.state.content);
     }
 
 
     render() {
         return <form id="form" >
-            <Style.Text>  <textarea type="field" name="content" placeholder={this.state.notes.content} value={this.state.notes.content} onChange={this.handleChange} /></Style.Text>
-            <Style.Button onClick={this.handleSave} type="save" value="save">Update</Style.Button>
+            <Style.Text>  
+                <textarea type="field" 
+                name="content" 
+                placeholder={this.state.notes.content} 
+                value={this.state.notes.content} 
+                onChange={this.handleChange} /></Style.Text>
+            <Style.Button 
+                onClick={this.handleSave} 
+                type="save" 
+                value="save">Update</Style.Button>
         </form>;
     }
 
