@@ -24,7 +24,7 @@ class ShowUpdateForm extends React.Component {
 
     handleChange = (e) => {
         e.preventDefault();
-        console.log('this statmelel---->', this.props)
+        console.log('this statmelel---->', this.state.content)
         this.setState({content: e.target.value,});
     }
 
@@ -41,8 +41,8 @@ class ShowUpdateForm extends React.Component {
             <Style.Text>  
                 <textarea type="field" 
                 name="content" 
-                placeholder={this.state.notes.content} 
-                value={this.state.notes.content} 
+                placeholder={this.state.content} 
+                value={this.state.content} 
                 onChange={this.handleChange} /></Style.Text>
             <Style.Button 
                 onClick={this.handleSave} 
