@@ -2,7 +2,10 @@ import React from 'react';
 import uuidv4 from 'uuid/v4';
 import Style from '../style/styles.js'
 
-export default class NoteForm extends React.Component {
+import { connect } from 'react-redux';
+import { addNote } from '../../actions/note-actions.js';
+
+ class NoteForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,3 +43,9 @@ export default class NoteForm extends React.Component {
     </form>;
   }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  addNote: note => dispatch(addNote(note))
+});
+
+export default connect(null, mapDispatchToProps)(NoteForm);

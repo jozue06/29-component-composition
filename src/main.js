@@ -6,8 +6,12 @@ import Footer from './components/app/footer.js';
 import Style from './components/style/styles.js';
 import NoteForm from './components/note-create-form/index.js';
 import NoteItem from './components//note-list/note-item/index.js';
-import UpdateNote from './components/note-update/index.js'
+import UpdateNote from './components/note-update/index.js';
 
+import { Provider } from 'react-redux';
+import createAppStore from './lib/store';
+
+const store = createAppStore();
 
 class App extends React.Component {
 
@@ -39,16 +43,6 @@ class App extends React.Component {
   }
 
 
-  addNote = (note) => {
-    let notes = [...this.state.notes]
-    notes.push(note);
-    this.setState({ notes: notes });
-
-    console.log('state on add ', this.state.notes);
-
-    let storageToSet = JSON.stringify(notes)
-    localStorage.setItem('note', storageToSet)
-  }
 
   deleteNote = id => {
     const notes = this.state.notes.filter(note => note.id !== id);
@@ -97,6 +91,7 @@ class App extends React.Component {
   render() {
 
     return (
+      <Provider store={store}>
       <div>
         <Header />
         <Style.Wrapper>
@@ -124,6 +119,7 @@ class App extends React.Component {
         </Style.Wrapper>
         <Footer />
       </div>
+      </Provider>
     );
   }
 }
