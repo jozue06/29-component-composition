@@ -8,12 +8,12 @@ export const addNote = note => {
   }
 }
 
-export const noteUpdate = note => ({
+export const updateNote = note => ({
   type: 'NOTE_UPDATE',
   payload: note,
 })
 
-export const noteDelete = note => ({
+export const deleteNote = note => ({
   type: 'NOTE_DELETE',
   payload: note,
 })

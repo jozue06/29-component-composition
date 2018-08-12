@@ -1,7 +1,10 @@
 import React from 'react';
 import Style from '../../style/styles.js'
 
-export default class NoteItem extends React.Component {
+import { connect } from 'react-redux';
+import { deleteNote, updateNote } from '../../../actions/note-actions.js';
+
+class NoteItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,3 +48,12 @@ export default class NoteItem extends React.Component {
     )
   }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  deleteNote: note => dispatch(deleteNote(note)),
+  updateNote: note => dispatch(updateNote(note)),
+})
+
+  
+
+export default connect(null, mapDispatchToProps)(NoteItem);

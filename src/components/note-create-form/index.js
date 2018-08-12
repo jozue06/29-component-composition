@@ -20,11 +20,13 @@ import { addNote } from '../../actions/note-actions.js';
   }
 
   handleChange(e) {
+    console.log('handle')
     const change = e.target.value;
     this.setState({ [e.target.name]: change, id: uuidv4() });
   }
 
   handleSubmit(e) {
+    console.log('submit')
     e.preventDefault();
     this.props.addNote(this.state);
  
@@ -37,15 +39,26 @@ import { addNote } from '../../actions/note-actions.js';
 
   render() {
     return <form id="form" onSubmit={this.handleSubmit}>
-     <Style.Text> <input type="text" name="noteName" placeholder="Note Title" value={this.state.noteName} onChange={this.handleChange} /></Style.Text> 
-     <Style.Text>  <textarea type="field" name="content" placeholder="text" value={this.state.content} onChange={this.handleChange} /></Style.Text> 
+     <Style.Text> 
+       <input type="text" 
+       name="noteName" 
+       placeholder="Note Title" 
+       value={this.state.noteName} 
+       onChange={this.handleChange} />
+       </Style.Text> 
+     <Style.Text>  <textarea type="field" 
+     name="content" 
+     placeholder="text" 
+     value={this.state.content} 
+     onChange={this.handleChange} /></Style.Text> 
       <Style.Button type="submit" value="Add">Add Note</Style.Button>
     </form>;
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addNote: note => dispatch(addNote(note))
+  addNote: note =>{ dispatch(addNote(note))
+  console.log('stufss')}
 });
 
 export default connect(null, mapDispatchToProps)(NoteForm);

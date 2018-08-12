@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import ShowUpdateForm from '../note-update/showUpdateForm.js';
 
@@ -33,4 +34,11 @@ class NoteUpdateForm extends React.Component {
     }
 }
 
-export default NoteUpdateForm;
+
+const mapDispatchToProps = (state) => ({
+    notes: state,
+});
+
+
+
+export default connect(null,map)(NoteUpdateForm);
