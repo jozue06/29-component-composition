@@ -11,7 +11,6 @@ class ShowUpdateForm extends React.Component {
         this.cancel = this.cancel.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSave = this.handleSave.bind(this);
-        console.log('show props', this.props)
 
     }
 
@@ -25,15 +24,18 @@ class ShowUpdateForm extends React.Component {
 
     handleChange = (e) => {
         e.preventDefault();
-        console.log('this statmelel---->', this.state.content)
         this.setState({content: e.target.value,});
     }
 
 
     handleSave = (e) => {
         e.preventDefault();
-        console.log('handle save state', this.state)
+
+        let notes = this.state
+        this.props.save(notes);
+
         this.props.save(this.props.id, this.state.content);
+
     }
 
 
