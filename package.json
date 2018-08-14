@@ -15,10 +15,10 @@
       "<rootDir>/node_modules/"
     ],
     "testPathIgnorePatterns": [
-      "jest-setup.js"
+      "jestSetup.js"
     ],
     "setupFiles": [
-      "./__tests__/jest-setup.js"
+      "./__test__/jestSetup.js"
     ],
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "identity-obj-proxy"

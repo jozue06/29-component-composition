@@ -32,7 +32,7 @@ export default class NoteItem extends React.Component {
           <h4>Note Content: <Style.Title> {this.props.note.content}</Style.Title></h4>
 
           <Style.Button onClick={this.deleteNote}>x</Style.Button>
-          <Style.Button onClick={this.updateNote}>E</Style.Button>
+          <Style.Button onClick={this.updateNote} id={this.props.note.id} >E</Style.Button>
           <p>Click "X" to delete, or "E" to edit"</p>
 
         </li>

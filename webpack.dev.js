@@ -5,7 +5,7 @@ const { HotModuleReplacementPlugin } = require('webpack');
 
 const webpackDevConfig = {};
 webpackDevConfig.module = {};
-webpackDevConfig.mode = 'production';
+webpackDevConfig.mode = 'development';
 webpackDevConfig.devtool = 'inline-source-map';
 
 webpackDevConfig.devServer = {
