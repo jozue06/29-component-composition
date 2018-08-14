@@ -23,8 +23,9 @@ class NoteUpdateForm extends React.Component {
 
 
     render() {
-        console.log('inside update note state', this.props);
+        console.log('inside update note props', this.state.notes.id);
         if (this.props.updatingNote) {
+            console.log('inside update note propssssssss', this.state.notes.id);
             return this.showUpdateNote();
         }
         return <div>

@@ -16,8 +16,9 @@ class ShowUpdateForm extends React.Component {
     }
 
 
-    cancel() {
-        this.props.updatingNote({});
+    cancel(e) {
+        e.preventDefault();
+        this.props.save({});
     }
 
 
@@ -48,6 +49,10 @@ class ShowUpdateForm extends React.Component {
                 onClick={this.handleSave} 
                 type="save" 
                 value="save">Update</Style.Button>
+                <Style.Button 
+                onClick={this.cancel} 
+                type="cancel" 
+                value="cancel">Cancel</Style.Button>
         </form>;
     }
 
