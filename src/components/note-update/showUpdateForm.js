@@ -24,23 +24,18 @@ class ShowUpdateForm extends React.Component {
 
     handleChange = (e) => {
         e.preventDefault();
-<<<<<<< HEAD
-=======
-        console.log('this statmelel---->', this.state.content)
->>>>>>> josh
         this.setState({content: e.target.value,});
     }
 
 
     handleSave = (e) => {
         e.preventDefault();
-<<<<<<< HEAD
+
         let notes = this.state
         this.props.save(notes);
-=======
-        console.log('handle save state', this.state)
+
         this.props.save(this.props.id, this.state.content);
->>>>>>> josh
+
     }
 
 
